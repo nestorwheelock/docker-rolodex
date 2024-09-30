@@ -4,6 +4,9 @@ FROM python:3.9-slim
 # Set the working directory in the container
 WORKDIR /app
 
+# Install SQLite
+RUN apt-get update && apt-get install -y sqlite3
+
 # Copy the current directory contents into the container at /app
 COPY . /app
 
