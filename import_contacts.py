@@ -49,3 +49,19 @@ if __name__ == '__main__':
     create_contacts_table()
     import_contacts_from_csv()
     print("Contacts imported successfully!")
+with open(CSV_FILE, newline='', encoding='utf-8') as csvfile:
+    reader = csv.DictReader(csvfile)
+    for row in reader:
+        first_name = row.get('First Name', '')
+        last_name = row.get('Last Name', '')
+        phone = row.get('Phone 1 - Value', '')
+
+        # Combine first and last names
+        name = f"{first_name} {last_name}".strip()
+
+        # Debugging: Print out the names and phone numbers being processed
+        print(f"Processing: Name: {name}, Phone: {phone}")
+
+        # Only insert if both name and phone are present
+        if name and phone:
+            cursor.execute('INSERT INTO contacts (name, phone) VALUES (?, ?)', (name, phone))
