@@ -2,7 +2,7 @@ import csv
 import sqlite3
 
 DATABASE = 'rolodex.db'
-CSV_FILE = 'google_contacts.csv'  # Replace with the name of your CSV file
+CSV_FILE = 'contacts.csv'  # Replace with the name of your CSV file
 
 def get_db():
     """Connect to the SQLite database."""
